@@ -1,0 +1,16 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    depends_on:
+      - mysql_db
+  mysql_db:
+    image: mysql:latest
+    environment:
+      - MYSQL_DATABASE=app_db
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_USER=leo
+      - MYSQL_PASSWORD=secret
